@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تحكم الموقع | رجب رمضان محمد</title>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="admin-title-group">
+      <div class="icon">
+        <i class="fa-solid fa-sliders"></i>
+      </div>
+      <div>
+        <h1>لوحة تحكم السيرة الذاتية</h1>
+        <p style="font-size: 0.8rem; color: var(--text-secondary);">إدارة المحتوى، الصور، والخبرات بسهولة</p>
+      </div>
+    </div>
+
+    <div class="admin-actions">
+      <a href="index.html" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+        <i class="fa-solid fa-eye"></i>
+        <span>معاينة الموقع الحية</span>
+      </a>
+      <button class="btn btn-primary" id="save-all-btn" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+        <i class="fa-solid fa-floppy-disk"></i>
+        <span>حفظ التعديلات</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Admin Main Layout -->
+  <div class="admin-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <nav class="admin-nav-tabs">
+        <button class="tab-btn active" data-tab="tab-general">
+          <i class="fa-solid fa-user-gear"></i>
+          <span>البيانات الشخصية</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-kpi">
+          <i class="fa-solid fa-award"></i>
+          <span>التقييمات و KPIs</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-experience">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>الخبرات والشركات</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-skills">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <span>المهارات والنسب</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-gallery">
+          <i class="fa-solid fa-images"></i>
+          <span>معرض الصور</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-backup">
+          <i class="fa-solid fa-database"></i>
+          <span>النسخ الاحتياطي والضبط</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Content Panels -->
+    <main class="admin-main">
+
+      <!-- 1. General Info Tab -->
+      <section class="admin-tab-content active" id="tab-general">
+        <h2 class="form-section-title">
+          <i class="fa-solid fa-id-card"></i>
+          <span>تعديل البيانات الشخصية والتواصل</span>
+        </h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>الاسم الظاهر</label>
+            <input type="text" id="adm-name" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>الاسم الإنجليزي الثلاثي</label>
+            <input type="text" id="adm-fullNameEn" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>المسمى الوظيفي</label>
+            <input type="text" id="adm-jobTitle" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>سنوات الخبرة (أرقام)</label>
+            <input type="number" id="adm-yearsExp" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>رقم الهاتف للاتصال</label>
+            <input type="text" id="adm-phone" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>رقم الواتساب (بدون +)</label>
+            <input type="text" id="adm-whatsapp" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>تاريخ الميلاد</label>
+            <input type="text" id="adm-birthDate" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>العنوان السكني</label>
+            <input type="text" id="adm-address" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>الحالة الاجتماعية والأسرة</label>
+            <input type="text" id="adm-maritalStatus" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>الموقف من التجنيد</label>
+            <input type="text" id="adm-militaryStatus" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>اللغات</label>
+            <input type="text" id="adm-languages" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>الاهتمامات</label>
+            <input type="text" id="adm-interests" class="form-control">
+          </div>
+
+          <div class="form-group full-width">
+            <label>نبذة ترحيبية (Hero Description)</label>
+            <textarea id="adm-heroDesc" class="form-control"></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label>الصورة الشخصية الرئيسية (Hero Profile Photo)</label>
+            <input type="file" id="adm-profile-file" accept="image/*" class="form-control">
+            <input type="text" id="adm-profileImg" class="form-control" placeholder="أو أدخل رابط الصورة" style="margin-top: 0.5rem;">
+            <img id="prev-profile-img" class="image-preview-thumb" src="">
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. KPIs & Evaluation Tab -->
+      <section class="admin-tab-content" id="tab-kpi">
+        <h2 class="form-section-title">
+          <i class="fa-solid fa-award"></i>
+          <span>تعديل تقييم الأداء الرسمي ومؤشرات الكفاءة (KPIs)</span>
+        </h2>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>الكود الوظيفي (Employee Code)</label>
+            <input type="text" id="adm-kpi-code" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>اسم المشروع الحالي</label>
+            <input type="text" id="adm-kpi-project" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>تاريخ التعيين الرسمي</label>
+            <input type="text" id="adm-kpi-hire" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>معدل التقييم النهائي السنوي</label>
+            <input type="text" id="adm-kpi-total" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>نسبة المهارات الفنية (Technical KPIs)</label>
+            <input type="text" id="adm-kpi-tech" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>درجة المهارات السلوكية</label>
+            <input type="text" id="adm-kpi-behav" class="form-control">
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Experience Tab -->
+      <section class="admin-tab-content" id="tab-experience">
+        <h2 class="form-section-title">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>إدارة الخبرات المهنية والشركات</span>
+        </h2>
+
+        <div id="exp-items-container">
+          <!-- Dynamically generated experience cards -->
+        </div>
+
+        <button class="btn-add-item" id="add-exp-btn">
+          <i class="fa-solid fa-plus"></i>
+          <span>إضافة خبرة وظيفية جديدة</span>
+        </button>
+      </section>
+
+      <!-- 4. Skills Tab -->
+      <section class="admin-tab-content" id="tab-skills">
+        <h2 class="form-section-title">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <span>إدارة المهارات ومعدلات الإتقان</span>
+        </h2>
+
+        <div id="skills-items-container">
+          <!-- Dynamically generated skill cards -->
+        </div>
+
+        <button class="btn-add-item" id="add-skill-btn">
+          <i class="fa-solid fa-plus"></i>
+          <span>إضافة مهارة جديدة</span>
+        </button>
+      </section>
+
+      <!-- 5. Gallery Tab -->
+      <section class="admin-tab-content" id="tab-gallery">
+        <h2 class="form-section-title">
+          <i class="fa-solid fa-images"></i>
+          <span>إدارة معرض صور الموقع والأعمال الميدانية</span>
+        </h2>
+
+        <div class="admin-card-item" style="background: rgba(30, 58, 138, 0.04); border-color: var(--primary-color);">
+          <h3><i class="fa-solid fa-cloud-arrow-up"></i> رفع صورة جديدة للمعرض</h3>
+          <div class="form-grid" style="margin-top: 1rem; margin-bottom: 0;">
+            <div class="form-group">
+              <label>اختيار صورة من الجهاز</label>
+              <input type="file" id="new-gallery-file" accept="image/*" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>عنوان الصورة</label>
+              <input type="text" id="new-gallery-title" class="form-control" placeholder="مثال: الموقع الإنشائي الميداني">
+            </div>
+            <div class="form-group full-width">
+              <label>وصف الصورة</label>
+              <input type="text" id="new-gallery-desc" class="form-control" placeholder="مثال: الإشراف على تنفيذ الأساسات بالخوذة">
+            </div>
+          </div>
+          <button class="btn btn-primary" id="btn-upload-gallery" style="margin-top: 1rem;">
+            <i class="fa-solid fa-plus-circle"></i>
+            <span>إضافة الصورة المعروضة إلى المعرض</span>
+          </button>
+        </div>
+
+        <div id="gallery-items-container" class="form-grid">
+          <!-- Dynamically rendered gallery cards -->
+        </div>
+      </section>
+
+      <!-- 6. Backup & Reset Tab -->
+      <section class="admin-tab-content" id="tab-backup">
+        <h2 class="form-section-title">
+          <i class="fa-solid fa-database"></i>
+          <span>إدارة النسخ الاحتياطي وإعادة الضبط</span>
+        </h2>
+
+        <div class="form-grid">
+          <div class="admin-card-item">
+            <h3><i class="fa-solid fa-file-export"></i> تصدير نسخة احتياطية</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0.75rem 0 1.25rem 0;">تحميل كافة بيانات وصور الموقع الحالية كملف JSON للنسخ الاحتياطي.</p>
+            <button class="btn btn-primary" id="btn-export-data">
+              <i class="fa-solid fa-download"></i>
+              <span>تصدير ملف البيانات (JSON)</span>
+            </button>
+          </div>
+
+          <div class="admin-card-item" style="border-color: #ef4444;">
+            <h3 style="color: #ef4444;"><i class="fa-solid fa-rotate-left"></i> استعادة البيانات الأصلية</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0.75rem 0 1.25rem 0;">إعادة ضبط كافة بيانات الموقع إلى النسخة الأصلية المعتمدة.</p>
+            <button class="btn" id="btn-reset-data" style="background: #ef4444; color: #ffffff;">
+              <i class="fa-solid fa-trash-arrow-up"></i>
+              <span>إعادة ضبط المصنع</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toast-msg">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-text">تم حفظ التعديلات بنجاح!</span>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="assets/js/content-manager.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tab Navigation
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.admin-tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-tab');
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+
+          btn.classList.add('active');
+          document.getElementById(target).classList.add('active');
+        });
+      });
+
+      // Load Current Data into Form Controls
+      let cvData = getCVData();
+
+      function populateAdminForm() {
+        cvData = getCVData();
+        const g = cvData.general;
+        const k = cvData.kpis;
+
+        document.getElementById('adm-name').value = g.name || '';
+        document.getElementById('adm-fullNameEn').value = g.fullNameEn || '';
+        document.getElementById('adm-jobTitle').value = g.jobTitle || '';
+        document.getElementById('adm-yearsExp').value = g.yearsExp || '';
+        document.getElementById('adm-phone').value = g.phone || '';
+        document.getElementById('adm-whatsapp').value = g.whatsapp || '';
+        document.getElementById('adm-birthDate').value = g.birthDate || '';
+        document.getElementById('adm-address').value = g.address || '';
+        document.getElementById('adm-maritalStatus').value = g.maritalStatus || '';
+        document.getElementById('adm-militaryStatus').value = g.militaryStatus || '';
+        document.getElementById('adm-languages').value = g.languages || '';
+        document.getElementById('adm-interests').value = g.interests || '';
+        document.getElementById('adm-heroDesc').value = g.heroDesc || '';
+        document.getElementById('adm-profileImg').value = g.profileImg || '';
+        document.getElementById('prev-profile-img').src = g.profileImg || '';
+
+        // KPIs
+        document.getElementById('adm-kpi-code').value = k.employeeCode || '';
+        document.getElementById('adm-kpi-project').value = k.projectName || '';
+        document.getElementById('adm-kpi-hire').value = k.hireDate || '';
+        document.getElementById('adm-kpi-total').value = k.totalScore || '';
+        document.getElementById('adm-kpi-tech').value = k.technicalScore || '';
+        document.getElementById('adm-kpi-behav').value = k.behavioralScore || '';
+
+        renderAdminExperiences();
+        renderAdminSkills();
+        renderAdminGallery();
+      }
+
+      // Profile Photo File Upload Preview
+      const profileFileInput = document.getElementById('adm-profile-file');
+      profileFileInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = async (evt) => {
+            const savedPath = await uploadImageToServer(file.name, evt.target.result);
+            document.getElementById('adm-profileImg').value = savedPath;
+            document.getElementById('prev-profile-img').src = savedPath;
+            showToast("تم رفع الصورة الشخصية وحفظها على القرص!");
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Upload New Image to Gallery
+      document.getElementById('btn-upload-gallery').addEventListener('click', () => {
+        const fileInput = document.getElementById('new-gallery-file');
+        const titleInput = document.getElementById('new-gallery-title');
+        const descInput = document.getElementById('new-gallery-desc');
+
+        if (fileInput.files && fileInput.files[0]) {
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+          reader.onload = async (evt) => {
+            const savedPath = await uploadImageToServer(file.name, evt.target.result);
+            cvData.gallery.push({
+              id: 'g-' + Date.now(),
+              src: savedPath,
+              title: titleInput.value || 'صورة جديدة',
+              desc: descInput.value || 'وصف الصورة الجديدة'
+            });
+            titleInput.value = '';
+            descInput.value = '';
+            fileInput.value = '';
+            renderAdminGallery();
+            await saveCVData(cvData);
+            showToast("تمت إضافة الصورة وحفظها على القرص بنجاح!");
+          };
+          reader.readAsDataURL(file);
+        } else {
+          alert("يرجى اختيار صورة من جهازك أولاً.");
+        }
+      });
+
+      // Render Experiences
+      function renderAdminExperiences() {
+        const container = document.getElementById('exp-items-container');
+        container.innerHTML = cvData.experiences.map((exp, index) => `
+          <div class="admin-card-item" data-index="${index}">
+            <button class="btn-remove-item remove-exp-btn" data-index="${index}" title="حذف هذه الخبرة">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>المسمى الوظيفي</label>
+                <input type="text" class="form-control exp-title" value="${exp.title || ''}">
+              </div>
+              <div class="form-group">
+                <label>اسم الشركة / الجهة</label>
+                <input type="text" class="form-control exp-company" value="${exp.company || ''}">
+              </div>
+              <div class="form-group">
+                <label>الفترة الزمنية</label>
+                <input type="text" class="form-control exp-period" value="${exp.period || ''}">
+              </div>
+              <div class="form-group full-width">
+                <label>معلومات إضافية (الكود / التقييم / الموقع)</label>
+                <input type="text" class="form-control exp-meta" value="${exp.meta || ''}">
+              </div>
+              <div class="form-group full-width">
+                <label>المهام التفصيلية (كل مهمة في سطر مستقل)</label>
+                <textarea class="form-control exp-duties">${(exp.duties || []).join('\n')}</textarea>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        document.querySelectorAll('.remove-exp-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-index'));
+            cvData.experiences.splice(idx, 1);
+            renderAdminExperiences();
+          });
+        });
+      }
+
+      // Add Experience Button
+      document.getElementById('add-exp-btn').addEventListener('click', () => {
+        cvData.experiences.push({
+          title: "عنوان الوظيفة الجديدة",
+          company: "اسم الشركة الجديدة",
+          period: "الفترة الزمنية",
+          meta: "",
+          duties: ["مهمة وظيفية جديدة"]
+        });
+        renderAdminExperiences();
+      });
+
+      // Render Skills
+      function renderAdminSkills() {
+        const container = document.getElementById('skills-items-container');
+        container.innerHTML = cvData.skills.map((skill, index) => `
+          <div class="admin-card-item" data-index="${index}">
+            <button class="btn-remove-item remove-skill-btn" data-index="${index}" title="حذف هذه المهارة">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>اسم المهارة</label>
+                <input type="text" class="form-control skill-title" value="${skill.title || ''}">
+              </div>
+              <div class="form-group">
+                <label>نسبة الإتقان (مثال: 95%)</label>
+                <input type="text" class="form-control skill-percent" value="${skill.percent || ''}">
+              </div>
+              <div class="form-group full-width">
+                <label>وصف المهارة</label>
+                <input type="text" class="form-control skill-desc" value="${skill.desc || ''}">
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        document.querySelectorAll('.remove-skill-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-index'));
+            cvData.skills.splice(idx, 1);
+            renderAdminSkills();
+          });
+        });
+      }
+
+      // Add Skill Button
+      document.getElementById('add-skill-btn').addEventListener('click', () => {
+        cvData.skills.push({
+          title: "مهارة جديدة",
+          percent: "90%",
+          desc: "وصف المهارة الجديدة"
+        });
+        renderAdminSkills();
+      });
+
+      // Render Gallery
+      function renderAdminGallery() {
+        const container = document.getElementById('gallery-items-container');
+        container.innerHTML = cvData.gallery.map((item, index) => `
+          <div class="admin-card-item" data-index="${index}">
+            <button class="btn-remove-item remove-gallery-btn" data-index="${index}" title="حذف الصورة">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <img src="${item.src}" class="image-preview-thumb" style="width:100%; height:160px;">
+            <div class="form-group" style="margin-top: 0.75rem;">
+              <label>عنوان الصورة</label>
+              <input type="text" class="form-control gallery-title" value="${item.title || ''}">
+            </div>
+            <div class="form-group" style="margin-top: 0.5rem;">
+              <label>وصف الصورة</label>
+              <input type="text" class="form-control gallery-desc" value="${item.desc || ''}">
+            </div>
+          </div>
+        `).join('');
+
+        document.querySelectorAll('.remove-gallery-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-index'));
+            cvData.gallery.splice(idx, 1);
+            renderAdminGallery();
+          });
+        });
+      }
+
+      // Save All Form Data Function
+      function collectAndSaveData() {
+        cvData.general.name = document.getElementById('adm-name').value;
+        cvData.general.fullNameEn = document.getElementById('adm-fullNameEn').value;
+        cvData.general.jobTitle = document.getElementById('adm-jobTitle').value;
+        cvData.general.yearsExp = document.getElementById('adm-yearsExp').value;
+        cvData.general.phone = document.getElementById('adm-phone').value;
+        cvData.general.whatsapp = document.getElementById('adm-whatsapp').value;
+        cvData.general.birthDate = document.getElementById('adm-birthDate').value;
+        cvData.general.address = document.getElementById('adm-address').value;
+        cvData.general.maritalStatus = document.getElementById('adm-maritalStatus').value;
+        cvData.general.militaryStatus = document.getElementById('adm-militaryStatus').value;
+        cvData.general.languages = document.getElementById('adm-languages').value;
+        cvData.general.interests = document.getElementById('adm-interests').value;
+        cvData.general.heroDesc = document.getElementById('adm-heroDesc').value;
+        cvData.general.profileImg = document.getElementById('adm-profileImg').value;
+
+        // KPIs
+        cvData.kpis.employeeCode = document.getElementById('adm-kpi-code').value;
+        cvData.kpis.projectName = document.getElementById('adm-kpi-project').value;
+        cvData.kpis.hireDate = document.getElementById('adm-kpi-hire').value;
+        cvData.kpis.totalScore = document.getElementById('adm-kpi-total').value;
+        cvData.kpis.technicalScore = document.getElementById('adm-kpi-tech').value;
+        cvData.kpis.behavioralScore = document.getElementById('adm-kpi-behav').value;
+
+        // Collect Experiences
+        const expCards = document.querySelectorAll('#exp-items-container .admin-card-item');
+        cvData.experiences = Array.from(expCards).map((card, idx) => ({
+          id: `exp-${idx + 1}`,
+          title: card.querySelector('.exp-title').value,
+          company: card.querySelector('.exp-company').value,
+          period: card.querySelector('.exp-period').value,
+          meta: card.querySelector('.exp-meta').value,
+          duties: card.querySelector('.exp-duties').value.split('\n').filter(d => d.trim() !== '')
+        }));
+
+        // Collect Skills
+        const skillCards = document.querySelectorAll('#skills-items-container .admin-card-item');
+        cvData.skills = Array.from(skillCards).map(card => ({
+          title: card.querySelector('.skill-title').value,
+          percent: card.querySelector('.skill-percent').value,
+          desc: card.querySelector('.skill-desc').value
+        }));
+
+        // Collect Gallery
+        const galleryCards = document.querySelectorAll('#gallery-items-container .admin-card-item');
+        galleryCards.forEach((card, idx) => {
+          if (cvData.gallery[idx]) {
+            cvData.gallery[idx].title = card.querySelector('.gallery-title').value;
+            cvData.gallery[idx].desc = card.querySelector('.gallery-desc').value;
+          }
+        });
+
+        saveCVData(cvData);
+        showToast("تم حفظ جميع التعديلات بنجاح!");
+      }
+
+      document.getElementById('save-all-btn').addEventListener('click', collectAndSaveData);
+
+      // Export JSON
+      document.getElementById('btn-export-data').addEventListener('click', () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cvData, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", "cv_data_backup.json");
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+      });
+
+      // Reset Data
+      document.getElementById('btn-reset-data').addEventListener('click', () => {
+        if (confirm("هل أنت تأكد من إرجاع كافة البيانات والصور إلى النسخة الأصلية الرسمية؟")) {
+          cvData = resetCVData();
+          populateAdminForm();
+          showToast("تمت استعادة البيانات الأصلية بنجاح!");
+        }
+      });
+
+      // Toast Notification Helper
+      function showToast(msg) {
+        const toast = document.getElementById('toast-msg');
+        document.getElementById('toast-text').textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+
+      // Initial populate
+      populateAdminForm();
+    });
+  </script>
+</body>
+</html>
