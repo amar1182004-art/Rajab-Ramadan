@@ -2094,6 +2094,18 @@ body.dark-theme .nav-menu {
   }
 }
 
+/* Floating badge must never cover the face on small screens:
+   static below the photo instead of absolute over it */
+@media (max-width: 768px) {
+  .hero-floating-badge {
+    position: static;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    margin: 12px auto 6px auto;
+    animation: none;
+  }
+}
+
 /* --- Extra Small Phones (max-width: 380px) --- */
 @media (max-width: 380px) {
   .hero-image-card img {
